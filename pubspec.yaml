@@ -1,0 +1,9 @@
+name: flux
+description: A sample web application
+dependencies:
+  tiles: any
+  vacuum_persistent:
+    git: https://github.com/vacuumlabs/persistent.git
+dev_dependencies:
+  mock: any
+  unittest: any
