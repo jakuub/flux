@@ -8,20 +8,24 @@ import 'package:flux/dispatcher.dart';
 import 'package:vacuum_persistent/persistent.dart';
 
 class NewTodo extends Component<PersistentMap> {
-  NewTodo(props) : super(props) {
-  }
+  NewTodo(props) : super(props);
   
   render() {
-    return tiles.div(children: [
+    return tiles.form(listeners: {"onSubmit": submit}, children: [
       tiles.input(
           props: {"value": data.get("newText", "")},
-          listeners: {"onKeyUp": newTextChange}),
-        tiles.span(children: data.get("newText", ""))
-      ]);
+          listeners: {"onChange": newTextChange}),
+      tiles.button(props: {"type": "submit"}, children: "submit")
+    ]);
   }
   
   newTextChange(comp, ev) {
     dispatcher.dispatch({"event": "newtodo.change", "text": ev.target.value});
+  }
+  
+  submit(comp, ev) {
+    ev.preventDefault();
+    dispatcher.dispatch({"event": "newtodo.submit"});
   }
 }
 

@@ -5,6 +5,7 @@ import 'package:tiles/tiles.dart' as tiles;
 import 'package:tiles/tiles_browser.dart' as tiles;
 import 'todostore.dart';
 import 'newtodo.dart';
+import 'list.dart';
 import 'package:flux/dispatcher.dart';
 import 'package:vacuum_persistent/persistent.dart';
 
@@ -19,7 +20,8 @@ class TodoList extends Component {
   
   render() {
     return tiles.div(children: [
-      newTodo(props: cp(_store.data))
+      newTodo(props: cp(_store.data)),
+      list(props: cp(_store.data.get("todos")))
     ]);
   }
   
