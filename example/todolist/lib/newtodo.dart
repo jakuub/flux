@@ -3,8 +3,6 @@ library newtodo;
 import "package:flux/component.dart";
 import 'package:tiles/tiles.dart' as tiles;
 import 'package:tiles/tiles_browser.dart' as tiles;
-import 'todostore.dart';
-import 'package:flux/dispatcher.dart';
 import 'package:vacuum_persistent/persistent.dart';
 
 class NewTodo extends Component<PersistentMap> {
@@ -20,12 +18,12 @@ class NewTodo extends Component<PersistentMap> {
   }
   
   newTextChange(comp, ev) {
-    dispatcher.dispatch({"event": "newtodo.change", "text": ev.target.value});
+    dispatcher.dispatch({"type": "newtodo.change", "text": ev.target.value});
   }
   
   submit(comp, ev) {
     ev.preventDefault();
-    dispatcher.dispatch({"event": "newtodo.submit"});
+    dispatcher.dispatch({"type": "newtodo.submit"});
   }
 }
 

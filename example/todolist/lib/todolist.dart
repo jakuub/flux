@@ -2,19 +2,16 @@ library todolist;
 
 import "package:flux/component.dart";
 import 'package:tiles/tiles.dart' as tiles;
-import 'package:tiles/tiles_browser.dart' as tiles;
 import 'todostore.dart';
 import 'newtodo.dart';
 import 'list.dart';
-import 'package:flux/dispatcher.dart';
-import 'package:vacuum_persistent/persistent.dart';
 
 
 class TodoList extends Component {
   TodoStore _store;
   
   TodoList(props) : super(props) {
-    _store = new TodoStore(dispatcher, data: new PersistentMap());
+    _store = new TodoStore(dispatcher);
     _store.updated.listen(redraw);
   }
   
