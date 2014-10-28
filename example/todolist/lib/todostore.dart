@@ -3,9 +3,21 @@ import "package:flux/store.dart";
 import "package:vacuum_persistent/persistent.dart";
 import 'package:flux/dispatcher.dart';
 
-class TodoStore extends Store<PersistentMap> {
+/**
+ * TodoStore maintain the state of the Todo application. 
+ * The sate is stored in PersistentMap in structure:
+ * {
+ *   "todos": [
+ *     {
+ *       "id": "todo_0",
+ *       "text": "Something to do",
+ *       "done": false
+ *     }
+ *   ]
+ * }
+ */class TodoStore extends Store<PersistentMap> {
   TodoStore(Dispatcher dispatcher, {PersistentMap data})
-      : super(dispatcher, data: data != null ? data : persistent({})) {
+      : super(dispatcher, data: data) {
     listen({
       "newtodo.change": newTextChange,
       "newtodo.submit": newTodoSubmit,
@@ -14,8 +26,10 @@ class TodoStore extends Store<PersistentMap> {
       "list.removeDone": removeDone,
     });
 
-    insert(["newText"], "", notify: false);
-    insert(["todos"], new PersistentVector(), notify: false);
+    setData(persistent({
+      "newText": "",
+      "todos": [],
+    }), notify: false);
   }
 
   newTextChange(Map event) {

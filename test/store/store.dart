@@ -17,24 +17,24 @@ main() {
 
 
     setUp(() {
-      newData = persistent({"key": {"key2": {"key3": 2}}});
-      oldData = persistent({"key": {"key2": {"key3": 1}}});
+      newData = persist({"key": {"key2": {"key3": 2}}});
+      oldData = persist({"key": {"key2": {"key3": 1}}});
       mock = new StreamControllerMock();
       controller = new StreamController();
       store = new Store(null, updateController: mock, data: oldData);
     });
 
     test("should have constructor with dispatcher", () {
-      new Store<Persistent>(new Dispatcher());
+      new Store<PersistentIndexedCollection>(new Dispatcher());
     });
 
     test("should have persitend data", () {
       expect(store.data, isNotNull);
-      expect(store.data is Persistent, isTrue);
+      expect(store.data is PersistentIndexedCollection, isTrue);
     });
 
     test("should have optional named param in constructor for data", () {
-      store = new Store(null, data: new Persistent());
+      store = new Store(null, data: new PersistentIndexedCollection());
     });
 
     test("should have stream updated", () {
@@ -59,13 +59,13 @@ main() {
     });
 
     test("should add event to updateStream when set data", () {
-      store.setData(new Persistent());
+      store.setData(new PersistentIndexedCollection());
 
       mock.getLogs(callsTo("add")).verify(happenedOnce);
     });
 
     test("should add true t oupdateStream if data is changed", () {
-      store.setData(new Persistent());
+      store.setData(new PersistentIndexedCollection());
 
       mock.getLogs(callsTo("add", true)).verify(happenedOnce);
     });
@@ -102,7 +102,7 @@ main() {
       expect(store.data, equals(newData));
     });
     
-    test("should have method update which update adequate key of passed Persistent object", () {
+    test("should have method update which update adequate key of passed PersistentIndexedCollection object", () {
       newData = store.update(["key"], (_) => 2);
       
       expect(oldData, equals(newData));
@@ -117,14 +117,14 @@ main() {
     });
     
     test("should add event to updated stream when called update", () {
-      store.setData(persistent({"key": 1}));
+      store.setData(persist({"key": 1}));
       mock.clearLogs();
       store.update(["key"], (_) => 2);
       mock.getLogs(callsTo("add")).verify(happenedOnce);
     });
     
     test("should not create updated event if setData have attr notify false", () {
-      store.setData(persistent({1:2}), notify: false);
+      store.setData(persist({1:2}), notify: false);
       mock.getLogs(callsTo("add")).verify(neverHappened);
     });
     
@@ -216,8 +216,8 @@ main() {
         store.listen({"something to compare": callback});
         
         dispatcherStream.getLogs(callsTo("where", (filter) {
-          return filter(persistent({TYPE: "something to compare"})) 
-              && !filter(persistent({TYPE: "something else"})); 
+          return filter(persist({TYPE: "something to compare"})) 
+              && !filter(persist({TYPE: "something else"})); 
         })).verify(happenedOnce);
       });
 

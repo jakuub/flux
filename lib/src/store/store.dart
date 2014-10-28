@@ -1,6 +1,6 @@
 part of store;
 
-class Store<P extends Persistent> {
+class Store<P extends PersistentIndexedCollection> {
   
   final StreamController _updateController; 
 

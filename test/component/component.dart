@@ -9,8 +9,8 @@ import 'package:tiles/tiles.dart' as tiles;
 main() {
   group("(Component)", () {
     Dispatcher dispatcher = new Dispatcher();
-    Persistent data = new Persistent();
-    Persistent newData = new Persistent();
+    PersistentIndexedCollection data = new PersistentIndexedCollection();
+    PersistentIndexedCollection newData = new PersistentIndexedCollection();
     Props props = new Props(dispatcher: dispatcher, data: data);
     Component component;
     
@@ -42,7 +42,7 @@ main() {
       
       expect(component.shouldUpdate(oldProps, newProps), isFalse);
       
-      newProps = new Props(dispatcher: dispatcher, data: new Persistent());
+      newProps = new Props(dispatcher: dispatcher, data: new PersistentIndexedCollection());
       expect(component.shouldUpdate(oldProps, newProps), isTrue);
       
       newProps = new Props(dispatcher: new Dispatcher(), data: data);

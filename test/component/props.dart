@@ -8,7 +8,7 @@ import 'package:vacuum_persistent/persistent.dart';
 main() {
   group("(Props)", () {
     Dispatcher dispatcher = new Dispatcher();
-    Persistent data = new Persistent();
+    PersistentIndexedCollection data = new PersistentIndexedCollection();
 
     test("should have dispacher required in constructor", () {
       expect(() => new Props(), throws);
@@ -30,7 +30,7 @@ main() {
     test("should have final data and dispatcher", () {
       Props props = new Props(dispatcher: dispatcher, data: data);
 
-      expect(() => props.data = new Persistent(), throws);
+      expect(() => props.data = new PersistentIndexedCollection(), throws);
       expect(() => props.dispatcher = new Dispatcher(), throws);
       
       expect(props.data, equals(data));

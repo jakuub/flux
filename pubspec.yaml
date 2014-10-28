@@ -1,5 +1,8 @@
 name: flux
-description: A sample web application
+version: 0.0.2
+description: The beta version of the dart framework for Flux design pattern.
+homepage: https://github.com/jakuub/flux
+documentation: https://github.com/jakuub/flux
 dependencies:
   tiles: any
   vacuum_persistent:
