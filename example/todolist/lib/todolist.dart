@@ -2,23 +2,21 @@ library todolist;
 
 import "package:flux/component.dart";
 import 'package:tiles/tiles.dart' as tiles;
-import 'todostore.dart';
 import 'newtodo.dart';
 import 'list.dart';
 
 
 class TodoList extends Component {
-  TodoStore _store;
   
   TodoList(props) : super(props) {
-    _store = new TodoStore(dispatcher);
-    _store.updated.listen(redraw);
+    
+    data.onChange.listen((_) => redraw());
   }
   
   render() {
     return tiles.div(children: [
-      newTodo(props: cp(_store.data)),
-      list(props: cp(_store.data.get("todos")))
+      newTodo(props: cp(data.deref())),
+      list(props: cp(data.deref().get("todos")))
     ]);
   }
   

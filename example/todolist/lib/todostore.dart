@@ -15,9 +15,9 @@ import 'package:flux/dispatcher.dart';
  *     }
  *   ]
  * }
- */class TodoStore extends Store<PersistentMap> {
-  TodoStore(Dispatcher dispatcher, {PersistentMap data})
-      : super(dispatcher, data: data) {
+ */class TodoStore extends Store {
+  TodoStore(Dispatcher dispatcher, Cursor data)
+      : super(dispatcher, data) {
     listen({
       "newtodo.change": newTextChange,
       "newtodo.submit": newTodoSubmit,
@@ -26,10 +26,10 @@ import 'package:flux/dispatcher.dart';
       "list.removeDone": removeDone,
     });
 
-    setData(persistent({
+    setData(persist({
       "newText": "",
       "todos": [],
-    }), notify: false);
+    }));
   }
 
   newTextChange(Map event) {
@@ -41,7 +41,7 @@ import 'package:flux/dispatcher.dart';
       "id": "id_${todos.length}",
       "text": data.get("newText"),
       "done": false,
-    })), notify: false);
+    })));
     insert(["newText"], "");
 
   }

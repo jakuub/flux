@@ -1,5 +1,5 @@
 name: flux
-version: 0.0.2
+version: 0.0.3
 description: The beta version of the dart framework for Flux design pattern.
 homepage: https://github.com/jakuub/flux
 documentation: https://github.com/jakuub/flux
