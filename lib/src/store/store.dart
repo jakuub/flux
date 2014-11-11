@@ -5,9 +5,9 @@ class Store<P extends PersistentIndexedCollection> {
 
   P get data => cursor.deref();
 
-  final Dispatcher _dispatcher;
+  final Dispatcher dispatcher;
 
-  Store(this._dispatcher, this.cursor) {
+  Store(this.dispatcher, this.cursor) {
     if (cursor == null) {
       throw "cursor is required for Store constructor";
     }
@@ -38,7 +38,7 @@ class Store<P extends PersistentIndexedCollection> {
       if (!(filter is Function)) {
         filter = _compare(filter);
       }
-      _dispatcher.stream.where(filter).listen(callback);
+      dispatcher.stream.where(filter).listen(callback);
     });
   }
 
