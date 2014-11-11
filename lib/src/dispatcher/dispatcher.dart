@@ -16,5 +16,14 @@ class Dispatcher<E> {
   void dispatch(E event) {
     _controller.add(event);
   }
+  
+  void dispatchAsync(Future future, String type, String field){
+    future.then((value) {
+      dispatch(persist({
+        TYPE: type,
+        field: value
+      }));
+    });
+  }
 }
 

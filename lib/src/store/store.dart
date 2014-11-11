@@ -54,5 +54,3 @@ class Store<P extends PersistentIndexedCollection> {
   }
 
 }
-
-const String TYPE = "type";

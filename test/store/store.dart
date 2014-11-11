@@ -2,6 +2,7 @@ library store_test;
 import 'package:unittest/unittest.dart';
 import 'package:flux/store.dart';
 import 'package:flux/dispatcher.dart';
+import 'package:flux/helpers.dart';
 import 'package:vacuum_persistent/persistent.dart';
 import 'dart:async';
 import 'package:mock/mock.dart';
