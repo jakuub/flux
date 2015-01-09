@@ -1,4 +1,4 @@
-library component;
+library flux_component;
 
 import 'package:flux/dispatcher.dart';
 import 'package:tiles/tiles.dart' as tiles;

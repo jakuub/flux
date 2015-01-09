@@ -6,7 +6,7 @@ import "component/props.dart" as props;
 import "helpers/if_null.dart" as ifNull;
 
 main() {
-  
+
   group("(store)", () {
     store.main();
   });
@@ -20,5 +20,5 @@ main() {
   group("(helpers)", () {
     ifNull.main();
   });
-  
+
 }

@@ -1,4 +1,4 @@
-library component_props_test;
+library flux_component_props_test;
 
 import 'package:unittest/unittest.dart';
 import 'package:flux/component.dart';
@@ -32,11 +32,11 @@ main() {
 
       expect(() => props.data = new PersistentIndexedCollection(), throws);
       expect(() => props.dispatcher = new Dispatcher(), throws);
-      
+
       expect(props.data, equals(data));
       expect(props.dispatcher, equals(dispatcher));
     });
-    
+
     test("should overload == operator to compare data AND dispatcher", () {
       expect(new Props(dispatcher: dispatcher), equals(new Props(dispatcher: dispatcher)));
     });

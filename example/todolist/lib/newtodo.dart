@@ -7,23 +7,31 @@ import 'package:vacuum_persistent/persistent.dart';
 
 class NewTodo extends Component<PersistentMap> {
   NewTodo(props) : super(props);
-  
+
   render() {
-    return tiles.form(listeners: {"onSubmit": submit}, children: [
-      tiles.input(
-          props: {"value": data.get("newText", "")},
-          listeners: {"onChange": newTextChange}),
-      tiles.button(props: {"type": "submit"}, children: "submit")
-    ]);
+    return tiles.form(listeners: {
+      "onSubmit": submit
+    }, children: [tiles.input(props: {
+        "value": data.get("newText", "")
+      }, listeners: {
+        "onChange": newTextChange
+      }), tiles.button(props: {
+        "type": "submit"
+      }, children: "submit")]);
   }
-  
+
   newTextChange(comp, ev) {
-    dispatcher.dispatch({"type": "newtodo.change", "text": ev.target.value});
+    dispatcher.dispatch({
+      "type": "newtodo.change",
+      "text": ev.target.value
+    });
   }
-  
+
   submit(comp, ev) {
     ev.preventDefault();
-    dispatcher.dispatch({"type": "newtodo.submit"});
+    dispatcher.dispatch({
+      "type": "newtodo.submit"
+    });
   }
 }
 

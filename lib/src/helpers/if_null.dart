@@ -1,4 +1,4 @@
-part of helpers;
+part of flux_helpers;
 
 ifNull(object, fallback) {
   if (object != null) {

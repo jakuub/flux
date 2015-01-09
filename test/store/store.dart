@@ -1,4 +1,4 @@
-library store_test;
+library flux_store_test;
 import 'package:unittest/unittest.dart';
 import 'package:flux/store.dart';
 import 'package:flux/dispatcher.dart';

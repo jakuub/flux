@@ -1,4 +1,4 @@
-library store;
+library flux_store;
 
 import 'package:flux/dispatcher.dart';
 import 'package:flux/helpers.dart';

@@ -1,4 +1,4 @@
-part of store;
+part of flux_store;
 
 class Store<P extends PersistentIndexedCollection> {
   final Cursor cursor;

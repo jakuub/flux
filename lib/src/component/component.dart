@@ -1,4 +1,4 @@
-part of component;
+part of flux_component;
 
 class Component<T> extends tiles.Component {
   T get data => super.props != null ? super.props.data : null;
@@ -10,7 +10,7 @@ class Component<T> extends tiles.Component {
   Props<T> createProps(T data) {
     return new Props<T>(data: data, dispatcher: super.props.dispatcher);
   }
-  
+
   Props<T> cp(T data) => createProps(data);
 
   @override
