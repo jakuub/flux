@@ -23,6 +23,11 @@ class Dispatcher<E> {
         TYPE: type,
         field: value
       }));
+    }).catchError((error) {
+      dispatch(persist({
+        TYPE: "${type}_$ERROR",
+        ERROR: error
+      }));
     });
   }
 }

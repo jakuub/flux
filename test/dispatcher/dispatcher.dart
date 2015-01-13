@@ -58,6 +58,18 @@ main() {
       }));
     });
 
+    test("should add event to stream when future in dispatchAsync is rejected", () {
+      dispatcher = new Dispatcher(new StreamController());
+
+      dispatcher.dispatchAsync(new Future.error("error object"), "type", "field");
+
+      dispatcher.stream.listen(expectAsync((PersistentMap event) {
+        expect(event[TYPE], equals("type_error"));
+        expect(event.containsKey("error"), isTrue);
+        expect(event["error"], equals("error object"));
+      }));
+    });
+
   });
 }
 
