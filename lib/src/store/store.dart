@@ -46,7 +46,7 @@ class Store<P extends PersistentIndexedCollection> {
     return (value) {
       if (value is Map && value[TYPE] == valueToCompare) {
         return true;
-      } else if (value is PersistentMap && value.get(TYPE, null) == valueToCompare) {
+      } else if (value is PersistentIndexedCollection && value.get(TYPE, null) == valueToCompare) {
         return true;
       }
       return value == valueToCompare;
