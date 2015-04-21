@@ -1,12 +1,11 @@
 name: flux
-version: 0.1.6
+version: 0.1.7
 description: The beta version of the dart framework for Flux design pattern.
 homepage: https://github.com/jakuub/flux
 documentation: https://github.com/jakuub/flux
 dependencies:
   tiles: any
-  vacuum_persistent:
-    git: https://github.com/vacuumlabs/persistent.git
+  vacuum_persistent: '>=2.0.0'
 dev_dependencies:
   mock: any
   unittest: any
