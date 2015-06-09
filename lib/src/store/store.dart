@@ -52,5 +52,9 @@ class Store<P extends PersistentIndexedCollection> {
       return value == valueToCompare;
     };
   }
+  
+  error(String type) {
+    return "${type}_$ERROR";
+  }
 
 }

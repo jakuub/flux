@@ -3,6 +3,7 @@ import 'package:unittest/unittest.dart';
 import 'package:flux/store.dart';
 import 'package:flux/dispatcher.dart';
 import 'package:flux/helpers.dart';
+import 'package:flux/helpers.dart' as f;
 import 'package:vacuum_persistent/persistent.dart';
 import 'dart:async';
 import 'package:mock/mock.dart';
@@ -11,8 +12,8 @@ main() {
   group("(Store)", () {
 
     Store store;
-    PersistentMap oldData;
-    PersistentMap newData;
+    PMap oldData;
+    PMap newData;
     StreamController controller;
     Reference dataRef;
 
@@ -160,7 +161,7 @@ main() {
         })).verify(happenedOnce);
       });
 
-      test("should filter by attribute type if event is PersistentMap and filter is String", () {
+      test("should filter by attribute type if event is PMap and filter is String", () {
         store.listen({
           "something to compare": callback
         });
@@ -174,6 +175,10 @@ main() {
         })).verify(happenedOnce);
       });
 
+    });
+    
+    test("should have helper method error, which add sufix _\$ERROR to event type", (){
+      expect(store.error("event_type"), equals("event_type_${f.ERROR}"));
     });
 
   });
