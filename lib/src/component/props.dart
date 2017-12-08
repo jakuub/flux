@@ -12,6 +12,6 @@ class Props<T> {
 
   @override
   operator ==(Props other) {
-    return this.data == other.data && this.dispatcher == other.dispatcher;
+    return this.data.hashCode == other.data.hashCode && this.dispatcher.hashCode == other.dispatcher.hashCode;
   }
 }

@@ -14,6 +14,6 @@ class Component<T> extends tiles.Component {
   Props<T> cp(T data) => createProps(data);
 
   @override
-  shouldUpdate(Props<T> newProps, Props<T> oldProps) => newProps != oldProps;
+  shouldUpdate(Props<T> newProps, Props<T> oldProps) => newProps.hashCode != oldProps.hashCode;
 
 }
