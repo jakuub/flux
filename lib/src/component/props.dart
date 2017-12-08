@@ -4,7 +4,7 @@ class Props<T> {
   final Dispatcher dispatcher;
   final T data;
 
-  get int hashCode => data.hashCode * dispatcher.hashCode;
+  int get hashCode => data.hashCode * dispatcher.hashCode;
 
   Props({this.dispatcher, this.data}) {
     if (dispatcher == null) {
